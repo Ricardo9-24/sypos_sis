@@ -1,0 +1,10 @@
+/* .table tbody{
+    border-style: hidden !important;
+}
+
+tbody, td, tfoot, th, thead, tr{
+    border-style: hidden !important;
+}
+tbody td tfoot th thead tr{
+    border-style: hidden !important;
+} */

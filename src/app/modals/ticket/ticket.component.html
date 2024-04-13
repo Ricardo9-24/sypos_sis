@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="ticket" #ticket>
+        <!-- <img
+                
+                src="../../../assets/img/logoGitHub.jpeg"
+                alt="Logotipo" height="90px" width="10"> -->
+            <p class="centrado"><strong>REFACCIONARIA EL CRUCERO S.A de C.V</strong>
+                <br>CAA190834GF9<br>Colatlan, Ixhuatlan de madero 92685<br>17/10/2017 02:22 a.m. <br><strong>Ticket: #0001</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>CANT</th>
+                    <th>PRODUCTO</th>
+                    <th>$$</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="cantidad">1.00</td>
+                    <td class="producto">CHEETOS VERDES con chile extra 80 G</td>
+                    <td class="precio">$8.50</td>
+                </tr>
+                <tr>
+                    <td class="cantidad">2.00</td>
+                    <td class="producto">KINDER DELICE</td>
+                    <td class="precio">$10.00</td>
+                </tr>
+                <tr>
+                    <td class="cantidad">1.00</td>
+                    <td class="producto">COCA COLA 600 ML</td>
+                    <td class="precio">$10.00</td>
+                </tr>
+                <tr>
+                    <td class="cantidad"></td>
+                    <td class="producto">TOTAL</td>
+                    <td class="precio">$28.50</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="centrado">¡GRACIAS POR SU COMPRA!<br>systemas.colatlan</p>
+
+        <div style="text-align:center">
+            <!-- <ngx-barcode6
+              [bc-format]="'MSI'"
+              [bc-value]="'12345678901231'"
+              [bc-display-value]="true"
+            >
+            </ngx-barcode6> -->
+          </div>    
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-danger" mat-dialog-close>Cancelar</button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-success" (click)="imprimirPDF()">Imprimir</button>
+        </div>
+    </div>
+</div>
+
+<!-- src="https://yt3.ggpht.com/-3BKTe8YFlbA/AAAAAAAAAAI/AAAAAAAAAAA/ad0jqQ4IkGE/s900-c-k-no-mo-rj-c0xffffff/photo.jpg" -->

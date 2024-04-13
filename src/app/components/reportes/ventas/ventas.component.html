@@ -1,0 +1,50 @@
+<div class="container py-3"> <!-- LISTA DATATABLE-->
+    <h2>Lista de Ventas</h2>
+    
+    <!-- <button type='button' onclick="editarProducto()" class='btn btn-primary btn-xs '> <i class="icon-edit"></i></button> -->
+    <!-- <div class="example-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+          GitHub's API rate limit has been reached. It will be reset in one minute.
+        </div> 
+    </div> -->
+    <table class="table table-striped table-sm hover" id="tblVentas" style="border-color: lavenderblush; border-radius: 15px !important;">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Forma pago</th>
+            <th>Cant. Productos</th>
+            <th>Subtotal</th>
+            <th>IVA</th>
+            <th>Total</th>
+            <th>Fecha Registro</th>
+          </tr>
+        </thead>
+        <tbody>
+         <!-- <tr *ngFor="let group of rowData">
+               <td>{{group.nClave}}</td>
+               <td>{{group.nomProducto}}</td>
+               <td>{{group.nPrecioCompra}}</td>
+               <td>{{group.nPrecioVenta}}</td>
+               <td>{{group.nEstatus}}</td>
+               <td>{{group.dFecRegistro}}</td>
+               <td>{{group.dFecMovimiento}}</td>
+               <td>{{group.status}}</td>
+           </tr> -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="6" style="text-align:right">Total:</th>
+                <th>${{ntotal | number : '1.2-2'}} MXN</th>
+            </tr>
+        </tfoot>
+      </table>
+      <div *ngIf="isLoading" 
+        style="display: flex; justify-content: center; align-items: center; background: white;">
+        <mat-progress-spinner 
+          color="primary" 
+          mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+ </div>

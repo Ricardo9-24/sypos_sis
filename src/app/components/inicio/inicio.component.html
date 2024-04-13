@@ -1,0 +1,18 @@
+<p>inicio works!</p>
+
+<h2>{{version}}</h2>
+<div style="text-align:center">
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
+  </div>
+  <div style="text-align:center">
+    <ngx-barcode6
+      [bc-format]="'MSI'"
+      [bc-value]="'12345678901231'"
+      [bc-display-value]="true"
+    >
+    </ngx-barcode6>
+  </div>
+
+  <qr-code value="Yo world!" size="300" errorCorrectionLevel="M"></qr-code>

@@ -1,0 +1,77 @@
+<div class="container my-8 py-3">
+    <h1 class="">Reporte de compras</h1>
+
+
+    <!-- <ag-grid-angular style="width: 100%; height: 390px;" 
+        class="ag-theme-alpine" 
+        [rowData]="rowData"
+        [columnDefs]="columnDefs" 
+        [defaultColDef]="defaultColDef"
+        [columnHoverHighlight]="true"
+        rowSelection="multiple" 
+        [pagination]="true"
+        [suppressPaginationPanel]="true"
+        (paginationChanged)="onPaginationChanged()"
+        [paginationPageSize]="itemPerPage"
+        [accentedSort]="true"
+        (gridReady)="onGridReady($event)"
+        [frameworkComponents]="frameworkComponents"
+        (selectionChanged)="onSelectionChanged($event)"
+        >
+    </ag-grid-angular>
+    
+    <div  class="bgc-white p-3 border-b-1 brc-default-l2 d-flex flex-column flex-lg-row justify-content-between align-items-center mt-n1px" style="align-items: center; justify-content: center;">
+        <div>
+        <input class="form-control form-control-sm" type="text" id="filter-text-box" placeholder="Buscar en toda la tabla..." (input)="onFilterTextBoxChanged()" />
+        </div>
+    
+        <div class="d-flex mw-100 flex-nowrap text-nowrap align-items-center nav-tabs-scroll is-scrollable my-3 my-lg-0">
+            <div>
+                <a (click)="gotoFirst()" role="button" [ngClass]="{'disabled': currentPage == 1 || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                    <i class="fa fa-angle-double-left w-2 text-90 mx-2px"></i>
+                </a>
+                <a (click)="gotoPrev()" role="button" [ngClass]="{'disabled': currentPage == 1 || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                    <i class="fa fa-angle-left w-2 text-90 mx-2px"></i>
+                </a>
+            </div>
+        
+            <span class="text-sm text-secondary-l2 px-1">|</span>
+        
+            <div class="d-flex align-items-center mx-2"> 
+                P&aacute;gina <input class="form-control form-control-sm w-5 mx-1" [(ngModel)]="currentPage" (change)="gotoPage()" />  de {{totalPages || 1}}
+            </div>
+        
+            <span class="text-sm text-secondary-l2 px-1">|</span>
+        
+            <div>
+                <a (click)="gotoNext()" role="button" [ngClass]="{'disabled': currentPage == totalPages || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                    <i class="fa fa-angle-right w-2 text-90 mx-2px"></i>
+                </a>
+                <a (click)="gotoLast()" role="button" [ngClass]="{'disabled': currentPage == totalPages || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                    <i class="fa fa-angle-double-right w-2 text-90 mx-2px"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div>
+            <select [(ngModel)]="itemPerPage" (change)="updatePerPage()" class="form-control form-control-sm ml-2 ace-select no-border caret-double text-dark-tp3 bgc-white brc-secondary-l2 brc-h-secondary-m4 radius-1 border-2" style="width: 80px;">
+                <option value="8">10</option>
+                <option value="10">20</option>
+                <option value="20">50</option>
+                <option value="50">100</option>
+                <option value="50">200</option>
+            </select>
+        </div>
+    
+        <div *ngIf="rowData.length > 0" > Mostrando <span class="w-2 d-inline-block text-center"> {{(currentPage - 1) * itemPerPage + 1}} </span>  -
+            <span class="w-2 d-inline-block text-center mr-1"> {{currentPage * itemPerPage < rowData.length ? currentPage * itemPerPage : rowData.length}} </span> de
+            <span class="w-2 d-inline-block text-center"> {{rowData.length}} </span>
+        </div>
+    
+        <div *ngIf="rowData.length == 0"> Mostrando
+            <span class="w-2 d-inline-block text-center"> 0 </span> -
+            <span class="w-2 d-inline-block text-center mr-1"> 0 </span> of
+            <span class="w-2 d-inline-block text-center"> 0 </span>
+        </div> 
+    </div> -->
+</div>

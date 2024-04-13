@@ -1,0 +1,167 @@
+.example-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  table.dataTable thead{
+    margin-top: 5px !important;
+    bottom: 10px !important;
+    background-color: rgb(48, 151, 211) !important;
+    color: azure !important;
+  }
+
+  table.dataTable tbody th.dt-body-left,
+  table.dataTable tbody td.dt-body-left {
+    text-align: left;
+  }
+  table.dataTable tbody th.dt-body-center,
+  table.dataTable tbody td.dt-body-center {
+    text-align: center;
+  }
+  table.dataTable tbody th.dt-body-right,
+  table.dataTable tbody td.dt-body-right {
+    text-align: right;
+  }
+  table.dataTable tbody th.dt-body-justify,
+  table.dataTable tbody td.dt-body-justify {
+    text-align: justify;
+  }
+  table.dataTable tbody th.dt-body-nowrap,
+  table.dataTable tbody td.dt-body-nowrap {
+    white-space: nowrap;
+  }
+
+  table.dataTable tbody tr {
+    background-color: transparent;
+    cursor: pointer !important;
+  }
+  table.dataTable tbody tr.selected > * {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+    color: white;
+  }
+  table.dataTable tbody tr.selected a {
+    color: #090a0b !important;
+  }
+  table.dataTable tbody th,
+  table.dataTable tbody td {
+    padding: 8px 10px;
+  }
+  table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  table.dataTable.row-border tbody tr:first-child th,
+  table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th,
+  table.dataTable.display tbody tr:first-child td {
+    border-top: none;
+  }
+  table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  table.dataTable.cell-border tbody tr th:first-child,
+  table.dataTable.cell-border tbody tr td:first-child {
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  table.dataTable.cell-border tbody tr:first-child th,
+  table.dataTable.cell-border tbody tr:first-child td {
+    border-top: none;
+  }
+  table.dataTable.stripe > tbody > tr.odd > *, table.dataTable.display > tbody > tr.odd > * {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.023);
+  }
+  table.dataTable.stripe > tbody > tr.odd.selected > *, table.dataTable.display > tbody > tr.odd.selected > * {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.hover > tbody > tr:hover > *, table.dataTable.display > tbody > tr:hover > * {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.035);
+  }
+  table.dataTable.hover > tbody > tr.selected:hover > *, table.dataTable.display > tbody > tr.selected:hover > * {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.order-column > tbody tr > .sorting_1,
+  table.dataTable.order-column > tbody tr > .sorting_2,
+  table.dataTable.order-column > tbody tr > .sorting_3, table.dataTable.display > tbody tr > .sorting_1,
+  table.dataTable.display > tbody tr > .sorting_2,
+  table.dataTable.display > tbody tr > .sorting_3 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.019);
+  }
+  table.dataTable.order-column > tbody tr.selected > .sorting_1,
+  table.dataTable.order-column > tbody tr.selected > .sorting_2,
+  table.dataTable.order-column > tbody tr.selected > .sorting_3, table.dataTable.display > tbody tr.selected > .sorting_1,
+  table.dataTable.display > tbody tr.selected > .sorting_2,
+  table.dataTable.display > tbody tr.selected > .sorting_3 {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.display > tbody > tr.odd > .sorting_1, table.dataTable.order-column.stripe > tbody > tr.odd > .sorting_1 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.054);
+  }
+  table.dataTable.display > tbody > tr.odd > .sorting_2, table.dataTable.order-column.stripe > tbody > tr.odd > .sorting_2 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.047);
+  }
+  table.dataTable.display > tbody > tr.odd > .sorting_3, table.dataTable.order-column.stripe > tbody > tr.odd > .sorting_3 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.039);
+  }
+  table.dataTable.display > tbody > tr.odd.selected > .sorting_1, table.dataTable.order-column.stripe > tbody > tr.odd.selected > .sorting_1 {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.display > tbody > tr.odd.selected > .sorting_2, table.dataTable.order-column.stripe > tbody > tr.odd.selected > .sorting_2 {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.display > tbody > tr.odd.selected > .sorting_3, table.dataTable.order-column.stripe > tbody > tr.odd.selected > .sorting_3 {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.display > tbody > tr.even > .sorting_1, table.dataTable.order-column.stripe > tbody > tr.even > .sorting_1 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.019);
+  }
+  table.dataTable.display > tbody > tr.even > .sorting_2, table.dataTable.order-column.stripe > tbody > tr.even > .sorting_2 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.011);
+  }
+  table.dataTable.display > tbody > tr.even > .sorting_3, table.dataTable.order-column.stripe > tbody > tr.even > .sorting_3 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.003);
+  }
+  table.dataTable.display > tbody > tr.even.selected > .sorting_1, table.dataTable.order-column.stripe > tbody > tr.even.selected > .sorting_1 {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.display > tbody > tr.even.selected > .sorting_2, table.dataTable.order-column.stripe > tbody > tr.even.selected > .sorting_2 {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.display > tbody > tr.even.selected > .sorting_3, table.dataTable.order-column.stripe > tbody > tr.even.selected > .sorting_3 {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.display tbody tr:hover > .sorting_1, table.dataTable.order-column.hover tbody tr:hover > .sorting_1 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.082);
+  }
+  table.dataTable.display tbody tr:hover > .sorting_2, table.dataTable.order-column.hover tbody tr:hover > .sorting_2 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.074);
+  }
+  table.dataTable.display tbody tr:hover > .sorting_3, table.dataTable.order-column.hover tbody tr:hover > .sorting_3 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.062);
+  }
+  table.dataTable.display tbody tr:hover.selected > .sorting_1, table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_1 {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.display tbody tr:hover.selected > .sorting_2, table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_2 {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.display tbody tr:hover.selected > .sorting_3, table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_3 {
+    box-shadow: inset 0 0 0 9999px #0d6efd;
+  }
+  table.dataTable.no-footer {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+  table.dataTable.compact thead th,
+  table.dataTable.compact thead td,
+  table.dataTable.compact tfoot th,
+  table.dataTable.compact tfoot td,
+  table.dataTable.compact tbody th,
+  table.dataTable.compact tbody td {
+    padding: 4px;
+  }

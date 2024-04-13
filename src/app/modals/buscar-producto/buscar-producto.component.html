@@ -1,0 +1,108 @@
+<div class="row">
+    <div class="col-md-12 py-3">
+        <div class="col-md-12">
+        <!-- <label class="col-form-label">Ingresa el nombre o código del producto</label> -->
+                <!-- <input class="form-control" type="text" id="filter-text-box" placeholder="Ingresa el nombre o código del producto"  /> -->
+                <!-- <div class="form-group row ">
+                    <div class="col-md-12">
+                      <ng-select 
+                          id="productos" 
+                          name="nIdProducto"
+                          [items]="accounts" 
+                          bindLabel="nomProducto" 
+                          groupBy="sClasificacion" 
+                          [multiple]="false"
+                          placeholder="Ingresa el nombre o código del producto"
+                          appendTo="body"
+                          [selectableGroup]="true"
+                          (change)="seleccionarProducto($event)"
+                        >
+                        <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                          <h5>{{item.nClave}} {{item.nomProducto}}</h5>
+                        </ng-template>
+                      </ng-select>
+                    </div>
+                  </div> -->
+                  <!-- [ngClass]="{'loading':isLoading}" -->
+                  <div class="search-bar">
+                    <input type="text" class="form-control input-src" placeholder="¡Busca tu producto!"
+                    (keyup)="searchTerm$.next($any($event.target).value)">
+                  </div>
+                
+                  <!-- <ul class="list">
+                    <li *ngFor="let item of listFiltered$ | async">
+                      {{item.nomProducto}}
+                    </li>
+                  </ul> -->
+                  <div class="row wrapper" [ngClass]="{'ocultarBuscador':ocultarBuscador}">
+                    <div class="limit-width" #asBoxInput>
+                      <div class="results">
+                        <ul>
+                          <li class="product" *ngFor="let data of listFiltered$ | async" (click)="selectProducto(data)">
+                            <a class="name" >{{data.nomProducto}}</a>
+                            <img [src]="data.sImagen" alt="">
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+      </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm-4">
+        <img class="" style="width: 88%; height: 105%; margin:0 auto; border-radius: 5px;"  mat-card-image [src]="dataProducto.sImagen" alt="Card">
+    </div>
+    <div class="col-md-8 col-sm-8">
+        <table class="table table-borderless">
+            <tbody >
+              <tr>
+                <th scope="row">Producto</th>
+                <td>{{dataProducto.nomProducto}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Marca</th>
+                <td>{{dataProducto.sMarca}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Existencias</th>
+                <td>{{dataProducto.nStock}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Precio</th>
+                <td class="precio">${{dataProducto.nPrecioVenta}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Cantidad</th>
+                <td>
+                <select class="form-control" name="" id="" [(ngModel)]="dataProducto.nCantidad" [value]="1">
+                    <option value="0">Selecciona una cantidad</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row py-4" style="margin: 0 auto;">
+    <div class="col-md-6"></div>
+    <div class="col-md-6" style="margin: 0 auto;">
+        <div>
+
+            <button class="btn btn-danger" mat-dialog-close>Cerrar</button>
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn btn-success" align="right" (click)="validarSeleccion($event)" [mat-dialog-close]="dataProducto">Agregar</button>
+        </div>
+    </div>
+</div>

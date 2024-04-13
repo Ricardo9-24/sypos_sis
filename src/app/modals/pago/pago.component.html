@@ -1,0 +1,92 @@
+<!-- <h2 mat-dialog-title>Install Angular</h2> -->
+<mat-dialog-content class="mat-typography">
+	<!-- <ejs-schedule #schedule width='100%' height='500px'></ejs-schedule> -->
+    <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal text-center">Ticket de Pago</h4>
+          
+        </div>
+        <div class="card-body">
+            <div class="title-cards">
+                <h1 class="card-title pricing-card-title text-center"><small class="text-muted fw-light">El total de la compra es</small> ${{nTotalCompra | number : '1.2-2'}}<small class="text-muted fw-light"> MXN</small></h1>
+            </div>
+          
+            <div class="container-card">
+          
+                <div class="card metodoPago" [ngClass]="{'metodoActive':metTarjeta}" (click)="elegirMetodoPago(1)" >
+                    <figure align="center">
+                        <img src="../../../assets/img/business.png">
+                    </figure>
+                    <div class="contenido-card">
+                        <h3>Tarjeta</h3>
+                    </div>
+                </div>
+            
+                <div class="card metodoPago" [ngClass]="{'metodoActive':metEfectivo}" (click)="elegirMetodoPago(2)">
+                    <figure align="center">
+                        <img src="../../../assets/img/money.webp">
+                    </figure>
+                    <div class="contenido-card">
+                        <h3>Efectivo</h3>
+                    </div>
+                </div>
+            
+                <div class="card metodoPago" [ngClass]="{'metodoActive':metTransfer}" (click)="elegirMetodoPago(3)">
+                    <figure align="center">
+                        <img src="../../../assets/img/transfer.png">
+                    </figure>
+                    <div class="contenido-card">
+                        <h3>Transferencia</h3>
+                    </div>
+                </div>
+          </div>
+          
+        </div>
+      </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <h3>Su cambio es de  </h3> &nbsp; &nbsp; <h2 class="card-title pricing-card-title">${{nCambio | number : '1.2-2'}}</h2>  &nbsp; &nbsp; &nbsp; &nbsp;
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" class="w-100 form-control btn-lg btn-outline-primary" (ngModelChange)="obtenerCambio($event)" [(ngModel)]="montoReferencia">
+
+        </div>
+        <div class="col-md-6">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <!-- <button mat-button class="btn btn-success btn-2x" [mat-dialog-close]="dataProducto" cdkFocusInitial >Pagar</button> -->
+            <button mat-button class="btn btn-success btn-2x" [mat-dialog-close]="dataProducto" cdkFocusInitial (click)="pagar()" >Pagar</button>
+
+        </div>
+    </div>
+</mat-dialog-actions>
+
+
+
+
+<!-- CAROUSEL FUNCIONAL -->
+<!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../assets/img/anadir-al-carrito.png" class="d-block w-10"  style="width: 40px; height: 60px;">
+      </div>
+      <div class="carousel-item">
+        <img src="../../../assets/img/logoGitHub.jpeg" class="d-block w-10"style="width: 40px; height: 60px;">
+      </div>
+      <div class="carousel-item">
+        <img src="../../../assets/img/anadir-al-carrito.png" class="d-block w-10" style="width: 40px; height: 60px;"   >
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> -->

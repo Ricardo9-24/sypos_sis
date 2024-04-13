@@ -1,0 +1,115 @@
+<form action="#" class="credit-card-div" [formGroup]="myForm" (ngSubmit)="submit()">
+    <div class="panel panel-default" >
+        <input type="text" name="idProducto" [(ngModel)]="producto.nIdProducto" formControlName="idProducto" hidden>
+        <div class="panel-left col-md-6 col-sm-12 col-xs-12 pad-adjust" id="leftPanel" style=" margin: 0 auto; justify-content: center;">
+            <!-- <div class="col-md-6 col-sm-12 col-xs-12 pad-adjust"> -->
+                <div *ngIf="dataPostRecib; then imagenTrue else imagenFalse"></div>
+                <ng-template #imagenTrue>
+                    <!-- <img [src]="imageSrc" (click)="selectImagen()" style="width: 80%; height: 70%; margin: -75px auto 0px 90px; justify-content: center;" height="50%"  mat-card-image alt="Card"> -->
+                    <img [src]="imageSrc" (click)="selectImagen()" style="width: 70%; height: 170%; margin: 0 auto; justify-content: center;" height="50%"  mat-card-image alt="Card">
+                </ng-template> 
+                <ng-template #imagenFalse>
+                    <div class="form-group col-md-12">
+                        <input type="file" name="file" id="file" formControlName="file"  class="form-control" (change)="onFileChange($event)" class="input-file">
+                        <label for="file" class="btn btn-tertiary js-labelFile">
+                            <i class="icon fa fa-upload"></i>
+                            <span class="js-fileName">Selecciona una imagen</span>
+                        </label>
+                        </div>
+                </ng-template>
+                
+            <!-- </div> -->
+        </div>
+        <div class="panel-heading">
+            <!-- Clave ---- Nombre ---- Descripcion ---- Marca ---- Modelo ---- Serie ---- Precio Compra, venta --- Cantidad ---- unidad medida ---- clasificacion -->
+            <div class="row rowProduct">
+                <div class="col-md-12">
+                    <span class="help-block text-muted small-font"> Clave</span>
+                    <input type="text" class="form-control" name="clave" placeholder="00SKUGER56870" (paste)="pegarProducto($event)" [(ngModel)]="producto.nClave" formControlName="clave"/>
+                </div>
+            </div>
+            <div class="row rowProduct">
+                <div class="col-md-12">
+                    <span class="help-block text-muted small-font" > Nombre</span>
+                    <input type="text" class="form-control" name="nombre" placeholder="Balatas" [(ngModel)]="producto.nomProducto" formControlName="nombre"/>
+                </div>
+            </div>    
+            <div class="row rowProduct">
+                <div class="col-md-12">
+                    <span class="help-block text-muted small-font" > Descripci&oacute;n</span>
+                    <input type="text" class="form-control" placeholder="Balatas traseras para moto" [(ngModel)]="producto.sDescripcion" formControlName="descripcion" />
+                </div>
+            
+            </div>
+
+        </div>
+        <div class="seceondSection rowProduct">
+            
+            <div class="row rowProduct">
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <span class="help-block text-muted small-font" > Marca</span>
+                    <select class="form-control"  name="marca" id="marca" formControlName="idMarca" [(ngModel)]="producto.nIdMarca" >
+                        <option *ngFor="let marca of listMarcas" [value]="marca.nIdMarca">
+                            {{marca.sMarca}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <span class="help-block text-muted small-font" > Modelo</span>
+                    <select class="form-control" name="modelo" formControlName="idModelo" [(ngModel)]="producto.nIdModelo">
+                        <option *ngFor="let modelo of listModelo" [value]="modelo.nIdModelo">
+                            {{modelo.sModelo}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <span class="help-block text-muted small-font" > Clasificaci&oacute;n</span>
+                    <select class="form-control" name="clasificacion" formControlName="idClasificacion" [(ngModel)]="producto.nIdClasificacion">
+                        <option *ngFor="let clasificacion of listClasificacion" [value]="clasificacion.nIdClasificacion">
+                            {{clasificacion.sClasificacion}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <span class="help-block text-muted small-font" > Unidad medida</span>
+                    <select class="form-control" name="unidadMedida" formControlName="idUnidadMedida" [(ngModel)]="producto.nIdUnidadMedida">
+                        <option *ngFor="let unidad of listUnidadMedida" [value]="unidad.nIdUnidadMedida">
+                            {{unidad.sUnidadMedida}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row rowProduct">
+                <div class="col-md-4">
+                    <span class="help-block text-muted small-font" > Cantidad</span>
+                    <input class="form-control" placeholder="100" formControlName="cantidad" [(ngModel)]="producto.nCantidad"/>
+                </div>
+                <div class="col-md-4">
+                    <span class="help-block text-muted small-font" > Precio Compra</span>
+                    <input type="text" class="form-control" placeholder="$400.00" formControlName="precioCompra" [(ngModel)]="producto.nPrecioCompra"/>
+                </div>
+                <div class="col-md-4">
+                    <span class="help-block text-muted small-font" > Precio Venta</span>
+                    <input type="text" class="form-control" placeholder="$450.00" formControlName="precioVenta" [(ngModel)]="producto.nPrecioVenta"/>
+                </div>
+            </div>
+
+
+            <div class="row rowProduct">
+                <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+                     <button class="btn btn-danger" mat-dialog-close>Cancelar</button> 
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust" align="right">
+                      <button type="submit"  class="btn btn-primary btn-block" [mat-dialog-close]="response">{{txtbutton}}</button>
+                  </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+</form>

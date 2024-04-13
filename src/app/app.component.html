@@ -1,0 +1,180 @@
+
+<div *ngIf="!isLogin">
+  <app-login></app-login>
+</div>
+
+<div *ngIf="isLogin">
+
+  <mat-toolbar>
+    <button mat-icon-button class="menu-button-sanwich" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    </button> &nbsp;
+    SyPos Soluciones
+    <div>
+      <nav class="navbar navbar-expand-sm navbar-light bg-light align-items-right topnav-right" align="right" style="background:#004a9f !important; text-align: right !important; align-content: right !important;">
+        <div class="container-fluid">
+          <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+          <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle navigation" >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup" mdbCollapse >
+            <div class="navbar-nav">
+              <a class="nav-link" href="#">
+                <button mat-button routerLink="/venta" class=" btn btn-link menu-button" style="color: white;">
+                <!-- <mat-icon style="color: white;">balance</mat-icon> -->
+                <!-- <mat-icon style="color: white;">note_alt</mat-icon>Nota - Reporte -->
+                <mat-icon style="color: white;">chair_alt</mat-icon><!--Sillon - bacula-->
+                <!-- <mat-icon style="color: white;">bar_chart</mat-icon>Grafica - grafica -->
+                <!-- <mat-icon style="color: white;">monetization_on</mat-icon>Signo Moneda - Signo Moneda -->
+                <!-- <mat-icon style="color: white;">point_of_sale</mat-icon> -->
+                <span>Bascula</span>
+              </button>
+            </a>
+            <a class="nav-link" href="#">
+              <button mat-button routerLink="/venta" class=" btn btn-link menu-button" style="color: white;">
+                <mat-icon style="color: white;">delete</mat-icon>
+                <span>Eliminar</span>
+                </button>
+              </a>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+    <span class="head-menu"></span>
+    <button mat-button class="menu-button-sanwich" (click)="logout()" >
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <!-- Seccion para el menu -->
+    <mat-sidenav #sidenav="matSidenav" class=" mat-elevation-z8" style="color: white;">
+      <mat-nav-list>
+        <!-- <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" /> -->
+        <img class="avatar mat-elevation-z8" src="https://preview.ibb.co/jrsA6R/img12.jpg" />
+        
+        <h4 class="name">{{sNombre}} {{sApellido}}</h4>
+        <p class="designation">{{sPuesto}}</p>
+        
+        <mat-divider></mat-divider>
+          <button mat-button routerLink="/venta" class=" btn btn-link menu-button" style="color: white;">
+              <mat-icon style="color: white;">home</mat-icon>
+              <span>Venta</span>
+            </button>
+            <button mat-button routerLink="/productos" class="menu-button">
+              <mat-icon>person</mat-icon>
+              <span>Productos</span>
+            </button>
+            <button mat-button routerLink="/altaProducto" class="menu-button">
+              <mat-icon>info</mat-icon>
+              <span>Alta Producto</span>
+            </button>
+            <button mat-button routerLink="/ventas" class="menu-button">
+              <mat-icon>info</mat-icon>
+              <span>Ventas</span>
+            </button>
+            
+            
+            <a mat-list-item [ngStyle]="{'padding-left': (depth * 12) + 'px'}"
+            class="menu-list-item menu-button" *ngIf="usuarios" routerLinkActive="is-active"
+            (click)="showSubmenuReportes=!showSubmenuReportes">
+            <!-- <mat-icon class="routeIcon text-responsive">description</mat-icon> -->
+            <mat-icon class="routeIcon text-responsive">trending_up</mat-icon>
+            <span >Reportes</span>
+            <span fxflex class="twistie-separator"></span>
+            <mat-icon class="menu-twistie" [@indicatorRotate]="showSubmenuReportes ? 'expanded': 'collapsed'">
+                    expand_more
+                  </mat-icon>
+                </a>
+                
+                <div *ngIf="showSubmenuReportes" class="menu-child">
+                  <a mat-list-item style="padding-left: 12px; height: 3rem;" routerLink="/compras"
+                  class="menu-list-item menu-button" *ngIf="compras" routerLinkActive="is-active">
+                  <!-- <mat-icon class="routeIcon text-responsive menu-child">edit</mat-icon> -->
+                  <mat-icon class="routeIcon text-responsive menu-child">insert_drive_file</mat-icon>
+                  <span >Compras</span>
+                  <span fxflex class="twistie-separator"></span>
+                </a>
+                
+                <a mat-list-item style="padding-left: 12px; height: 3rem;" routerLink="/verReportesComisiones"
+                class="menu-list-item menu-button" *ngIf="cortesCaja" routerLinkActive="is-active">
+                <mat-icon class="routeIcon text-responsive menu-child">attach_money</mat-icon>
+                  <span >Corte caja</span>
+                  <span fxflex class="twistie-separator"></span>
+              </a>
+              
+              <a mat-list-item style="padding-left: 12px; height: 3rem;" routerLink="/verReportesComisiones"
+              class="menu-list-item menu-button" *ngIf="cortesCaja" routerLinkActive="is-active">
+                  <mat-icon class="routeIcon text-responsive menu-child">attach_money</mat-icon>
+                  <span >Inventario</span>
+                  <span fxflex class="twistie-separator"></span>
+                </a>
+                
+                <a mat-list-item style="padding-left: 12px; height: 3rem;" routerLink="/verReportesComisiones"
+                class="menu-list-item menu-button" *ngIf="cortesCaja" routerLinkActive="is-active">
+                <mat-icon class="routeIcon text-responsive menu-child">attach_money</mat-icon>
+                <span >Movimientos</span>
+                <span fxflex class="twistie-separator"></span>
+              </a>
+              
+              <a mat-list-item style="padding-left: 12px; height: 3rem;" routerLink="/ventas"
+                  class="menu-list-item menu-button" *ngIf="cortesCaja" routerLinkActive="is-active">
+                  <mat-icon class="routeIcon text-responsive menu-child">attach_money</mat-icon>
+                  <span >Ventas</span>
+                  <span fxflex class="twistie-separator"></span>
+                </a>
+              </div>
+              
+              <a mat-list-item [ngStyle]="{'padding-left': (depth * 12) + 'px'}"
+              class="menu-list-item menu-button" *ngIf="usuarios" routerLinkActive="is-active"
+              (click)="showSubmenuCatalogos=!showSubmenuCatalogos">
+              <!-- <mat-icon class="routeIcon text-responsive">description</mat-icon> -->
+              <mat-icon class="routeIcon text-responsive">trending_up</mat-icon>
+                <span >Catalogos</span>
+                <span fxflex class="twistie-separator"></span>
+                <mat-icon class="menu-twistie" [@indicatorRotate]="showSubmenuCatalogos ? 'expanded': 'collapsed'">
+                    expand_more
+                </mat-icon>
+              </a>
+              
+              <div *ngIf="showSubmenuCatalogos" class="menu-child">
+              <a mat-list-item style="padding-left: 12px; height: 3rem;" routerLink="/bitacora"
+                  class="menu-list-item menu-button" *ngIf="clientes" routerLinkActive="is-active">
+                  <!-- <mat-icon class="routeIcon text-responsive menu-child">edit</mat-icon> -->
+                  <mat-icon class="routeIcon text-responsive menu-child">insert_drive_file</mat-icon>
+                  <span >Clientes</span>
+                  <span fxflex class="twistie-separator"></span>
+                </a>
+              </div>
+              
+              <a mat-list-item routerLink="/estadistica" *ngIf="showSubmenuEstadisticas"
+              class="menu-list-item menu-button" routerLinkActive="is-active">
+              <mat-icon class="routeIcon text-responsive">trending_up</mat-icon>
+              <span>Estadisticas</span>
+              <span fxflex class="twistie-separator"></span>
+            </a>
+            
+            
+            <mat-divider></mat-divider>
+            
+            <button mat-button class="menu-button">
+              <mat-icon>help</mat-icon>
+              <span>Help</span>
+          </button>
+        </mat-nav-list>
+      </mat-sidenav>
+      <!-- Lista de contenido -->
+      <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+      
+    </mat-sidenav-container>
+    
+  </div>
+

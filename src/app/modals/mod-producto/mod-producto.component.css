@@ -1,0 +1,81 @@
+.credit-card-div  span { padding-top:20px; }
+.credit-card-div img { padding-top:35px; }
+.credit-card-div .small-font { font-size:15px; }
+.credit-card-div .pad-adjust { padding-top:20px; }
+
+.rowProduct{
+    margin-top: 25px;
+}
+
+.panel-left{
+    width: 35%;
+    height: 20%;
+    /* text-align: center; */
+    /* background: red; */
+    /* color: white; */
+}
+
+#leftPanel {
+    position: fixed;
+    /* top: 80px;
+    left: 10px; */
+    /* background: blue; */
+  }
+  
+
+.panel-heading{
+    /* width: 500px;
+  height: 300px; */
+  overflow: scroll;
+  padding-left: 50%;
+}
+
+.seceondSection{
+    top: 30px;
+}
+
+/* Estilos para subir imagen */
+
+.btn-tertiary {
+  color: #1bc66a;
+  padding: 0;
+  line-height: 40px;
+  width: 300px;
+  margin: auto;
+  display: block;
+  border: 3px solid #519abe;
+  }
+  .hover, 
+    .focus {
+      color: lighten(#555, 20%);
+      border-color: lighten(#555, 20%);
+    }
+
+
+/* input file style */
+
+.input-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;}
+  .js-labelFile {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+    .icon:before {
+      
+      content: "\f093";
+    }
+    .has-file 
+      .icon:before {
+        /* //font-awesome */
+        content: "\f00c";
+        color: #5AAC7B;
+      }
+    

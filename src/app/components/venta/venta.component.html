@@ -1,0 +1,155 @@
+<div class="container ">
+    <div class="row">
+      <div class="col-md-4 py-2">
+        <label class="col-form-label" scope="row"><p>Busqueda por código o por nombre</p></label>
+        <!-- <div class="col-md-9" >
+          
+          <input class="form-control input-src" type="text" id="filter-text-box" placeholder="Escribe algo..." autocomplete="off" (keyup)="(search($event))"
+            [ngClass]="{'loading':isLoading}"
+            [(ngModel)]="searchProducto.sDataSearch" 
+            (paste)="pegarProducto($event)"/>
+        </div> -->
+        <div class="col-md-9" >
+          
+          <input class="form-control input-src" type="text" id="filter-text-box" placeholder="Escribe algo..." autocomplete="off"
+            [ngClass]="{'loading':isLoading}"
+            (ngModelChange)="searchProductos($event)"
+            [(ngModel)]="searchProducto.sDataSearch" 
+            (paste)="pegarProducto($event)"/>
+        </div>
+        <!-- <div class="search-bar col-md-9">
+          <input type="text" class="search" placeholder="¡Comienza a buscar tu plato favorito!" (keyup)="searchTerm$.next($event.target.value)">
+        </div> -->
+        <div class="col-md-2">
+          <!-- <label class="col-form-label"></label> -->
+          <!-- <div class="col-md-12"> -->
+            <!-- <a (click)="buscarProductos()"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a> -->
+          <!-- </div> -->
+        </div>
+      </div>
+      <div class="col-md-4 py-2">
+        <label class="col-form-label" scope="row"><p>CLientes</p></label>
+        <select class="form-control input-src" name="cliente" id="cliente" aria-placeholder="Seleciona un cliente">
+          <option value="0">Selecciona una opcion</option>
+          <option value="1">Cliente General</option>
+          <option value="2">Cliente Sypos 1</option>
+        </select>
+      </div>
+      <!-- <div class="col-md-4 py-2"></div> -->
+      <div class="col-md-4 py-2">
+        <div>Fecha: {{fechaActual}} </div> 
+        
+        <div>
+          <label class="col-form-label"></label>
+          <div class="col-md-12" align="right">
+            <a (click)="buscarProductos()"><i class="fa fa-search fa-3x" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row wrapper" [ngClass]="{'ocultarBuscador':ocultarBuscador}">
+      <ul *ngFor="let item of listFiltered" class="list">
+        <li>
+          {{item}}
+        </li>
+      </ul>
+    </div> -->
+    
+    <div class="row wrapper" [ngClass]="{'ocultarBuscador':ocultarBuscador}">
+      <div class="limit-width" #asBoxInput>
+        <div class="results">
+          <ul>
+            <li *ngFor="let data of data$ | async" 
+              (click)="selectProducto(data)">
+              <a class="name" >{{data.nomProducto}}</a>
+              <img [src]="data.sImagen" alt="">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+     <div > <!-- LISTA AG-GRID-->
+        <ag-grid-angular 
+          style="width: 100%; height: 400px;" 
+          class="ag-theme-alpine" 
+          [lang]="language"
+          [readOnlyEdit]="false"
+          [rowData]="rowData"
+          (cellValueChanged)="onCellValueChanged($event)"
+          [columnDefs]="columnDefs"
+          [defaultColDef]="defaultColDef"
+          [columnHoverHighlight]="true"
+          rowSelection="multiple" 
+          [pagination]="true" 
+          [suppressPaginationPanel]="true"
+          [paginationPageSize]="itemPerPage"
+          [accentedSort]="true"
+          (gridReady)="onGridReady($event)"
+          [frameworkComponents]="frameworkComponents">
+        </ag-grid-angular>
+     </div>
+
+    <div class="row my-4">
+      <!-- SECCION PARA MOSTRAR LOS COMPLEMENTOS -->
+      <div class="col-md-6 col-sm-6">
+        <div class="card" style="width: 100%; height: 140px; ">
+          <!-- <div class=""> -->
+            <div class="col-md-8">
+              <table class="table table-borderless">
+                <tbody >
+                  <tr>
+                    <th scope="row">Promociones</th>
+                    <td align="right">${{pTotal | number : '1.2-2'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <div>
+                <button class="btn btn-primary" style="margin-left: 10px;" (click)="eliminarProducto()">Eliminar</button>
+              </div>
+            </div>
+            <!-- <h1 class="card-title">Alta de Inventario</h1> -->
+          <!-- </div> -->
+        </div>
+      </div>
+      
+      <!-- SECCION PARA MOSTRAR LOS MONTOS DE IVA,SUBTOTAL Y TOTAL -->
+      <div class="col-md-4 col-sm-7">
+        <div class="card " style="width: 100%; height: 140px; ">
+          <div class="card-body">
+            <table class="table table-borderless">
+              <tbody >
+                <tr>
+                  <th scope="row">Subtotal</th>
+                  <td align="right">${{pSubTotal | number : '1.2-2'}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">IVA</th>
+                  <td align="right">${{pIVA | number : '1.2-2'}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Total</th>
+                  <td align="right">${{pTotal | number : '1.2-2'}}</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCION PARA MOSTRAR EL TOTAL A PAGAR -->
+      <div class="col-md-2 col-sm-5">
+        <div class="card " style="width: 100%; height: 140px; ">
+          <div class="card-body"  align="center">
+            <h2><strong> ${{pTotal | number : '1.2-2'}} MXN</strong></h2>
+            <br>
+            <button type="button" mat-button class="btn btn-success " (click)="pagar()">&nbsp; Pagar &nbsp;</button>
+          </div>
+        </div>
+      </div>
+
+</div>
