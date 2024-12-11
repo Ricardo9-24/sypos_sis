@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Producto } from 'src/app/models/producto.model';
@@ -102,9 +102,11 @@ export class ModProductoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit(){
+  submit(event:Event){
+    console.log(event);
     console.log(this.myForm)
     console.log(this.producto)
+    event.preventDefault();
     if (this.txtbutton == "Guardar") {
       this.myForm.patchValue({
         nOpcion: 2
@@ -140,7 +142,7 @@ export class ModProductoComponent implements OnInit {
       })
     }
   }
-
+  
   onFileChange(event:any) {
     this.imageSrc = ""
     const reader = new FileReader();
@@ -166,8 +168,30 @@ export class ModProductoComponent implements OnInit {
     // this.imageSrc = ""
     this.dataPostRecib = false;
   }
-
-  pegarProducto(event:ClipboardEvent){
+  
+  pegarProducto(data:ClipboardEvent){
     
+    console.log(data);
+    const codigo = data.clipboardData?.getData('text');
+    
+    data.preventDefault();
+    console.log(data);
   }
+
+  searchProductos(datoBusqueda:ClipboardEvent): any{
+    console.log(datoBusqueda);
+    const codigo = datoBusqueda.clipboardData?.getData('text');
+    console.log(codigo);
+    datoBusqueda.preventDefault();
+    
+
+      
+  }
+
+  // @HostListener("click", ["$event.target"])
+  // onClick(btn: Event){
+  //   btn.preventDefault();
+  //   btn.stopPropagation();
+  //   console.log(btn);
+  // }
 }

@@ -39,6 +39,7 @@ export class PagoComponent implements OnInit {
           // console.log("enter")
           
           this.pagar()
+          
           this.dialogRef.close(this.dataProducto)
         }
       }
@@ -49,7 +50,10 @@ export class PagoComponent implements OnInit {
   }
   
   pagar(){
-    this.dialog.closeAll()
+    this.elegirMetodoPago(Number(this.dataProducto.nFormaPago));
+    console.log(this.dataProducto);
+    this.dialogRef.close(this.dataProducto);
+    this.dialog.closeAll();
   }
 
   elegirMetodoPago(metodo:number){

@@ -12,7 +12,6 @@ export class ApiProductoService {
   constructor(private http:HttpClient) { }
 
   buscarProducto(q:string): Observable<any>{  
-    console.log(q)
     this.dataRequest ={
       "sDataSearch":q
     }

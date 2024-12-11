@@ -1,7 +1,7 @@
 <!-- <h4 color="primary" class="dialog-headline"><img src="../../../assets/img/caja.png" class="img" /> Apertura de caja</h4> -->
-<div class="container">
+<div class="container" style="scrollbar-color:  transparent transparent;">
   <mat-card-title class="centerInput my-4" style="margin-bottom: 10px !important;">{{titulo}} de caja</mat-card-title>
-    <mat-dialog-content>
+    <mat-dialog-content style="scrollbar-color:  transparent transparent;">
       <form #corteCajaForm="ngForm" (ngSubmit)="CorteCaja()">
         <div class="row">
           <div class="col-md-6 form-outline form-white">
@@ -33,23 +33,23 @@
               <div class="card-body">
                   <div class="example-container">
                       <div class="col-md-12 centerInput" >
-                          <mat-form-field class="col-md-5 col-sm-6 col-6 xample-full-width">
+                          <mat-form-field class="col-md-5 col-sm-6 col-6 ">
                             <!-- <label>Turno</label> -->
                             <input type="text" name="usuario" matInput placeholder="Usuario" disabled [(ngModel)]="corteCaja.usuario">
                           </mat-form-field> 
-                            &nbsp; &nbsp;
-                          <mat-form-field class="col-md-5 col-sm-6 col-6 example-full-width">
+                            &nbsp;
+                          <mat-form-field class="col-md-5 col-sm-6 col-6 ">
                             <input type="text" name="fecha" matInput placeholder="Fecha" disabled [(ngModel)]="corteCaja.fecha">
                           </mat-form-field>
                       </div>
                       
                       <div class="col-md-12 centerInput" >
-                          <mat-form-field class="col-md-5 col-sm-6 col-6 xample-full-width">
+                          <mat-form-field class="col-md-5 col-sm-6 col-6 ">
                             <!-- <label>Turno</label> -->
                             <input type="text" name="turno" matInput placeholder="Turno" disabled [(ngModel)]="corteCaja.turno">
                           </mat-form-field> 
-                            &nbsp; &nbsp;
-                          <mat-form-field class="col-md-5 col-sm-6 col-6 example-full-width">
+                            &nbsp;
+                          <mat-form-field class="col-md-5 col-sm-6 col-6 ">
                             <span matPrefix>$ &nbsp;</span>
                             <input type="text" name="montoInicial" matInput placeholder="Monto inicial" [(ngModel)]="corteCaja.montoInicial">
                           </mat-form-field>
@@ -190,7 +190,7 @@
     </mat-dialog-actions> -->
     <div class="row py-2" >
         <div class="col-md-5" style="margin: 0 auto !important;">
-            <button class="btn btn-danger col-md-11 col-sm-11" mat-dialog-close>{{tituloBtnCancel}}</button>
+            <button class="btn btn-danger col-md-11 col-sm-11" mat-dialog-close (click)="masAdelante()">{{tituloBtnCancel}}</button>
         </div>
         <div class="col-md-5" style="margin: 0 auto !important;">
             <button type="submit" class="btn btn-primary col-md-11 col-sm-11" (click)="CorteCaja()" >{{tituloBtn}}</button>

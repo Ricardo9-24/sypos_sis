@@ -56,6 +56,7 @@ export class VentaComponent implements OnInit {
   ocultarBuscador:boolean = false //Mostrar y Ocultar el div de busqueda
   isLoading = false;
   btnPagar:boolean = true;
+  apertura:any;
   bCaja:number = 0;
   dataSearch:any
   rowData: Producto[] = [];
@@ -151,12 +152,12 @@ export class VentaComponent implements OnInit {
   listFiltered$: Observable<string[]> | undefined;
   // "12345638"
   // motor
-  ngOnInit() : void{ 
-
+  async ngOnInit() : Promise<void>{ 
+    this.apertura = this.tokenStorage.getAperturaCaja();
     const caja = this.tokenStorage.getCaja();
     this.bCaja = Object.keys(caja).length;
     
-    console.log(this.bCaja);
+    console.log(this.apertura);
   
 
     // this.searchTerms.pipe(
@@ -188,9 +189,9 @@ export class VentaComponent implements OnInit {
     //     }
     //   });
 
-    // this.impresoras = await ConectorPluginV3.obtenerImpresoras();
-
-    // this.impresoraSeleccionada = this.impresoras[0]
+    this.impresoras = await ConectorPluginV3.obtenerImpresoras();
+    console.log(this.impresoras);
+    this.impresoraSeleccionada = this.impresoras[0]
   }
 
   // typeahead = fromEvent(this.searchBox, 'input').pipe(
@@ -299,7 +300,7 @@ export class VentaComponent implements OnInit {
     console.log(datoBusqueda)
     this.ocultarBuscador = false
     // this.isLoading = true;
-    console.log(this.isLoading)
+    // console.log(this.isLoading)
     this.data$ = this.apiProducto.buscarProducto(datoBusqueda)
     .pipe(
       map((productos) => productos.sData),
@@ -308,7 +309,7 @@ export class VentaComponent implements OnInit {
       finalize(() => this.isLoading = false)
     );
 
-      
+    console.log(this.data$);
   }
 
   getProductos(q:string){
@@ -323,6 +324,7 @@ export class VentaComponent implements OnInit {
   }
 
   buscarProductos(){
+    console.log("buscarproductos");
     this.btnPagar = false;
     const dialogRef =  this.dialog.open(BuscarProductoComponent,{
       height:'55%',
@@ -480,7 +482,7 @@ export class VentaComponent implements OnInit {
   }
 
   async pagar(){
-    if(this.bCaja == 0){
+    if(Object.keys(this.apertura).length <= 0){
         this.dialog.open(InicioCajaComponent, {
           disableClose: true,
           height:'80%',
@@ -511,8 +513,12 @@ export class VentaComponent implements OnInit {
           console.log(this.rowData)
           this.btnPagar = true;
 
-
-          
+          if (datosBusqueda == "" || datosBusqueda == undefined) {
+            datosBusqueda = {
+              "nFormaPago" : 2
+            }
+          }
+          console.log(datosBusqueda);
           if (datosBusqueda != undefined && datosBusqueda!= "") {
             this.addCarrito = true
             let cantidad = 0;

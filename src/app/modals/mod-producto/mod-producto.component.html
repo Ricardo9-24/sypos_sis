@@ -1,4 +1,4 @@
-<form action="#" class="credit-card-div" [formGroup]="myForm" (ngSubmit)="submit()">
+<form action="#" class="credit-card-div" [formGroup]="myForm" (ngSubmit)="submit($event)">
     <div class="panel panel-default" >
         <input type="text" name="idProducto" [(ngModel)]="producto.nIdProducto" formControlName="idProducto" hidden>
         <div class="panel-left col-md-6 col-sm-12 col-xs-12 pad-adjust" id="leftPanel" style=" margin: 0 auto; justify-content: center;">
@@ -25,7 +25,15 @@
             <div class="row rowProduct">
                 <div class="col-md-12">
                     <span class="help-block text-muted small-font"> Clave</span>
-                    <input type="text" class="form-control" name="clave" placeholder="00SKUGER56870" (paste)="pegarProducto($event)" [(ngModel)]="producto.nClave" formControlName="clave"/>
+                    <input type="text" 
+                            class="form-control" 
+                            name="clave" 
+                            placeholder="00SKUGER56870" 
+                            formControlName="clave"
+                            (ngModelChange)="searchProductos($event)"
+                            [(ngModel)]="producto.nClave"
+                            (paste)="pegarProducto($event)" 
+                    />
                 </div>
             </div>
             <div class="row rowProduct">
@@ -104,7 +112,7 @@
                      <button class="btn btn-danger" mat-dialog-close>Cancelar</button> 
                   </div>
                   <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust" align="right">
-                      <button type="submit"  class="btn btn-primary btn-block" [mat-dialog-close]="response">{{txtbutton}}</button>
+                      <button class="btn btn-primary btn-block" (click)="submit($event)">{{txtbutton}}</button>
                   </div>
             </div>
 

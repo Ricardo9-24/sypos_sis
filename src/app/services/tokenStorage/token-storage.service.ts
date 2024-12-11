@@ -56,4 +56,20 @@ export class TokenStorageService {
     }
     return {};
   }
+
+  public saveAperturaCaja(apertura:Boolean){
+    let aperturaCaja = {
+      "apertura" : apertura
+    }
+    window.sessionStorage.setItem('apertura', JSON.stringify(aperturaCaja));
+  }
+
+  public getAperturaCaja(): any{
+    const apertura = window.sessionStorage.getItem('apertura');
+    
+    if (apertura) {
+      return JSON.parse(apertura)
+    }
+    return {};
+  }
 }

@@ -10,6 +10,7 @@ import { ModProductoComponent } from './modals/mod-producto/mod-producto.compone
 import { UploadsComponent } from './components/uploads/uploads.component';
 import { ComprasComponent } from './components/reportes/compras/compras.component';
 import { LoginComponent } from './components/login/login.component';
+import { ClientesComponent } from './components/catalogos/clientes/clientes.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:'upload', component:UploadsComponent},
   {path:'compras', component:ComprasComponent},
   {path:'login', component:LoginComponent},
+  {path:'clientes', component:ClientesComponent},
   {path:'',redirectTo:'inicio',pathMatch:"full"}
 
 ];

@@ -71,22 +71,23 @@ export class AppComponent {
       public ble: BluetoothCore
     ){
     this.expanded = true;
-    
+    this.apertura = tokenStorageService.getAperturaCaja();
+    // console.log(this.apertura);
     this.cajaData = this.tokenStorageService.getCaja();
+    // console.log(this.cajaData)
     
     this.userData = this.tokenStorageService.getUser();
-    console.log(this.userData)
-    console.log(this.userData.length)
+    // console.log(this.userData)
     
-    // this.dataSession = localStorage.getItem('dataSession')
-    // this.userData = JSON.parse(this.dataSession)
+    this.dataSession = localStorage.getItem('dataSession')
+    this.userData = JSON.parse(this.dataSession)
     // console.log(this.userData)
 
-    if (this.cajaData != null && Object.keys(this.cajaData).length > 0) {
-      this.apertura = true;
-    }else{
-      this.apertura = false;
-    }
+    // if (this.cajaData != null && Object.keys(this.cajaData).length > 0) {
+    //   this.apertura = true;
+    // }else{
+    //   this.apertura = false;
+    // }
 
     if (this.userData != null && Object.keys(this.userData).length > 0) {
       this.isLogin = true;
@@ -100,13 +101,13 @@ export class AppComponent {
   ngOnInit(): void {  }
 
   getDevice() {
-    console.log(this.ble.getDevice$());
+    // console.log(this.ble.getDevice$());
     // call this method to get the connected device
     return this.ble.getDevice$();
   }
   
   ngAfterViewInit() {
-    
+    // console.log(this.apertura)
     if (this.userData != null && Object.keys(this.userData).length > 0) { //Object.keys -- Valida que el objeto exista
       
       this.observer.observe(['(max-width: 800px)'])
@@ -132,12 +133,13 @@ export class AppComponent {
           this.sidenav.close();
         }
       });
-      console.log(this.apertura);
-      if (!this.apertura) { 
+      // console.log(this.apertura);
+      if (Object.keys(this.apertura).length <= 0) { 
         this.dialog.open(InicioCajaComponent, {
           disableClose: true,
           height:'80%',
           width:'60%',
+          
         })
       }
     }

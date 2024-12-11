@@ -46,7 +46,7 @@ export class InicioCajaComponent implements OnInit {
       private apiCatalogo:ApiCatologoService,
       private storage:TokenStorageService,
       private apiVenta:ApiVentaService,
-
+      private tokenStorage:TokenStorageService
   ) {
     moment.locale("es");
     
@@ -77,6 +77,7 @@ export class InicioCajaComponent implements OnInit {
         this.dataCaja = result.sData;
       }
     })
+    
     console.log(dataCaja);
     let montoInicial = String(dataCaja.montoInicial);
     console.log(this.corteCaja.montoInicial)
@@ -135,6 +136,7 @@ export class InicioCajaComponent implements OnInit {
 
   CorteCaja(){
     console.log(this.corteCaja);
+    console.log(this.apertura);
     const alert =  Swal.fire({
       icon:'warning',
       title: 'Faltan datos por capturar'
@@ -156,6 +158,8 @@ export class InicioCajaComponent implements OnInit {
               icon: 'success',
               title: 'Operacion Exitosa!'
             }).then(() => {
+              let apertura = true;
+              this.tokenStorage.saveAperturaCaja(apertura);
               this.dialog.closeAll();
             })
           }
@@ -209,5 +213,10 @@ export class InicioCajaComponent implements OnInit {
         this.corteCaja.retiroTarjeta = this.corteCaja.tarjetaCaja
     
     this.corteCaja.retiroTotal = (Number(this.corteCaja.retiroEfectivo) + Number(isNaN(Number(this.corteCaja.retiroTarjeta)) ? 0 : Number(this.corteCaja.retiroTarjeta)))
+  }
+
+  masAdelante(){
+    let apertura = false;
+    this.tokenStorage.saveAperturaCaja(apertura);
   }
 }

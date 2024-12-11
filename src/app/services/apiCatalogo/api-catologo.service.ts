@@ -46,4 +46,12 @@ export class ApiCatologoService {
 
     return this.http.post(`${this.url}/catalogo/caja.php`,this.dataRequest);
   }
+  
+  getCliente(idCliente:number): Observable<any>{  
+    this.dataRequest ={ 
+      "nIdCliente":idCliente 
+    }
+
+    return this.http.post(`${this.url}/cliente/getClientes.php`,this.dataRequest);
+  }
 }
